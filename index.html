@@ -2151,6 +2151,11 @@
       .fish-interlude { grid-template-columns: 1fr; }
       .fish-interlude img { width: min(100%, 680px); margin: 0 auto; }
       .fish-interlude figcaption { max-width: 620px; }
+
+      /* Stacked view only: lift the interlude into the empty run under the hero CTA. */
+      .field-book { display: flex; flex-direction: column; }
+      .hero-journal { order: -2; }
+      .fish-interlude { order: -1; }
     }
 
     @media (max-width: 600px) {
