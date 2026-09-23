@@ -3,7 +3,7 @@ const arrow='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentC
 const translations={
  'PRIVATE CATALOGUE PREVIEW · PRICES & ORDERING TO BE CONFIRMED':'ПРЕДПРОСМОТР КАТАЛОГА · ЦЕНЫ И УСЛОВИЯ ЗАКАЗА УТОЧНЯЮТСЯ',
  'Skip to content':'Перейти к содержимому','Black Horse home':'Black Horse — главная','Main navigation':'Основная навигация','Language':'Язык',
- 'Independent spirit. Sculptural form.':'Свободный дух. Скульптурная форма.',
+ 'Independent spirit. Sculptural form.':'Доспехи женственности',
  'Catalogue preview · Online purchasing is not yet available.':'Предпросмотр каталога · Онлайн-покупки пока недоступны.',
  'Explore the catalogue':'Смотреть каталог','The catalogue':'Каталог','Catalogue':'Каталог','Our world':'Наш мир','Message us':'Написать нам',
  'Contact BLACK HORSE':'Связаться с BLACK HORSE',
