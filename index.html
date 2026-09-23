@@ -2255,6 +2255,55 @@
     @media print {
       .mobile-cta { display: none !important; }
     }
+
+    /* Conversion offers */
+    .booking-offers {
+      min-height: auto;
+      padding-top: clamp(70px, 9vw, 120px);
+      padding-bottom: clamp(70px, 9vw, 120px);
+    }
+    .booking-offers-head { max-width: 780px; margin-bottom: 42px; }
+    .booking-offers-head h2 { margin-bottom: 16px; }
+    .booking-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .booking-card {
+      display:flex; flex-direction:column; min-height:430px; padding:clamp(26px,4vw,42px);
+      border:1px solid rgba(69,54,42,.16); background:rgba(255,250,244,.72);
+    }
+    .booking-card.paid { background:var(--ink); color:var(--cream); }
+    .booking-card .coordinate { margin-bottom:24px; }
+    .booking-card.paid .coordinate { color:#ef9e7e; }
+    .booking-card h3 { font-size:clamp(2rem,4vw,3.6rem); line-height:1; margin-bottom:18px; }
+    .booking-card > p:not(.coordinate):not(.booking-stat) { max-width:520px; color:var(--muted); line-height:1.72; }
+    .booking-card.paid > p:not(.coordinate):not(.booking-stat) { color:#d9d0c8; }
+    .booking-stat {
+      display:flex; align-items:center; flex-wrap:wrap; gap:10px; min-height:44px;
+      margin:4px 0 24px; font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    }
+    .booking-stat .dot { opacity:.45; }
+    .flip-window { display:inline-grid; overflow:hidden; min-width:230px; height:1.45em; }
+    .flip-copy { grid-area:1/1; opacity:0; transform:translateY(70%); transition:opacity .28s ease,transform .38s cubic-bezier(.2,.8,.2,1); }
+    .flip-copy.active { opacity:1; transform:translateY(0); }
+    .booking-card .section-cta { width:fit-content; margin-top:auto; }
+    .booking-card.paid .section-cta { background:var(--papaya); color:var(--ink); border-color:var(--papaya); }
+    .ongoing-note {
+      display:flex; justify-content:space-between; gap:28px; align-items:center;
+      margin-top:16px; padding:24px 0 0; border-top:1px solid rgba(69,54,42,.18);
+    }
+    .ongoing-note p { margin:0; color:var(--muted); line-height:1.6; }
+    .ongoing-note strong { color:var(--ink); }
+    .floating-book {
+      position:fixed; right:20px; bottom:20px; z-index:30; padding:13px 18px; border-radius:999px;
+      background:var(--ink); color:var(--cream); text-decoration:none; font-size:.78rem; font-weight:600;
+      box-shadow:0 14px 35px rgba(43,35,29,.22); transition:transform 180ms ease;
+    }
+    .floating-book:hover { transform:translateY(-2px); }
+    @media (max-width:760px) {
+      .booking-grid { grid-template-columns:1fr; }
+      .booking-card { min-height:390px; }
+      .ongoing-note { align-items:flex-start; flex-direction:column; }
+      .flip-window { min-width:200px; }
+      .floating-book { right:14px; bottom:14px; padding:11px 15px; }
+    }
   </style>
 </head>
 <body>
@@ -2273,7 +2322,7 @@
       <span class="header-email-full">chart@withdanaya.com</span>
       <span class="header-email-short" aria-hidden="true">Email</span>
     </a>
-    <a class="nav-cta" href="#contact" data-contact-link>Book a first conversation</a>
+    <a class="nav-cta" href="#book">Work with me</a>
   </nav>
 
   <main id="top" class="field-book">
@@ -2531,6 +2580,46 @@
       </div>
     </section>
 
+
+    <section id="book" class="folio booking-offers reveal" aria-labelledby="booking-title">
+      <span class="folio-route-mark" aria-hidden="true">Choose your door</span>
+      <div class="booking-offers-head">
+        <p class="coordinate">Bring me the human stuff</p>
+        <h2 id="booking-title">How much Danaya do you need?</h2>
+        <p class="section-copy">One thing taking up too much space in your head, or a quick chemistry check before we spend a stretch of time together.</p>
+      </div>
+
+      <div class="booking-grid">
+        <article class="booking-card">
+          <p class="coordinate">Not sure yet?</p>
+          <h3>Let’s see if we click.</h3>
+          <p class="booking-stat"><span>FREE</span><span class="dot">•</span><span>30 MIN</span><span class="dot">•</span><span>0 COMMITMENT</span></p>
+          <p>A chemistry call before you commit to seeing my smiley face for a stretch of time. Tell me what’s going on, ask me questions and get a feel for how I think.</p>
+          <a class="section-cta" href="https://app.lifecoachhub.com/book/danaya-yerzhanova">Meet Danaya →</a>
+        </article>
+
+        <article class="booking-card paid">
+          <p class="coordinate">Got a thing?</p>
+          <h3>One situation. One hour. One next move.</h3>
+          <p class="booking-stat">
+            <span>$90</span><span class="dot">•</span><span>60 MIN</span><span class="dot">•</span>
+            <span class="flip-window" aria-live="polite">
+              <span class="flip-copy active">90% LESS OVERTHINKING</span>
+              <span class="flip-copy">90 FEWER WHAT-IFS</span>
+              <span class="flip-copy">90 SOCIAL COURAGE POINTS</span>
+            </span>
+          </p>
+          <p>Bring the conversation, person, decision, boundary, date, friendship or text currently taking up too much space in your head. We’ll separate facts from assumptions and leave with a next move.</p>
+          <a class="section-cta" href="mailto:chart@withdanaya.com?subject=Book%20a%2060-minute%20session">Book 60 minutes →</a>
+        </article>
+      </div>
+
+      <div class="ongoing-note">
+        <p><strong>Want me in your corner for longer?</strong><br />Some things need more than one conversation. We can talk about ongoing work after we meet.</p>
+        <a class="journal-link" href="#contact">Talk about ongoing coaching →</a>
+      </div>
+    </section>
+
     <section id="contact" class="folio final-note reveal" aria-labelledby="contact-title">
       <span class="folio-number">10</span>
       <a class="folio-route-mark contact-route-link" href="#contact" data-contact-link>Start</a>
@@ -2551,6 +2640,7 @@
       <p>People need people. · <a href="/insights/">Insights</a> · <a href="https://www.instagram.com/danaya_papaya/" rel="me">Instagram</a> · <a href="https://www.threads.com/@danaya_papaya" rel="me">Threads</a> · <a href="#contact" data-contact-link>chart@withdanaya.com</a></p>
     </footer>
   </main>
+  <a class="floating-book" href="#book" aria-label="See coaching options">Work with me →</a>
 
   <script>
     const revealElements = document.querySelectorAll('.reveal');
@@ -2568,6 +2658,17 @@
         window.setTimeout(() => contactTitle?.focus({ preventScroll: true }), reduceMotion ? 0 : 650);
       });
     });
+
+
+    const flipCopies = [...document.querySelectorAll('.flip-copy')];
+    if (flipCopies.length > 1 && !reduceMotion) {
+      let flipIndex = 0;
+      window.setInterval(() => {
+        flipCopies[flipIndex].classList.remove('active');
+        flipIndex = (flipIndex + 1) % flipCopies.length;
+        flipCopies[flipIndex].classList.add('active');
+      }, 2400);
+    }
 
     if ('IntersectionObserver' in window && !reduceMotion) {
       const observer = new IntersectionObserver((entries) => {
