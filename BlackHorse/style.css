@@ -80,3 +80,52 @@ header nav{grid-column:1/-1;grid-row:2;justify-self:center}
 /* Keep the hero images inside their own grid row so the next section stays clear. */
 .hero{grid-template-rows:minmax(0,1fr);overflow:hidden}
 .hero>img{min-width:0;min-height:0}
+
+
+/* A compact, four-door homepage. */
+.notice{font-size:9px;letter-spacing:.04em;padding:5px 12px}
+header{padding:12px 4vw;gap:8px}
+header nav{display:none}
+header .wordmark{font-size:26px}
+header .wordmark span{font-size:9px;margin-top:5px}
+.home-portals{max-width:1080px;margin:0 auto;padding:0 20px}
+.about-tile{position:relative;display:block;height:clamp(260px,43vh,470px);overflow:hidden;color:white;background:#24231f}
+.about-tile img{object-position:center 30%;transition:transform .5s}
+.about-tile:after{content:'';position:absolute;inset:30% 0 0;background:linear-gradient(transparent,#0009)}
+.about-tile>div{position:absolute;z-index:1;bottom:24px;left:30px}
+.about-tile p{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.about-tile h1{font-size:clamp(34px,5vw,58px);font-style:italic}
+.about-tile .arrow,.line-tile .arrow{color:white}
+.about-tile .arrow{width:26px;height:26px}
+.about-tile:hover img{transform:scale(1.025)}
+.home-portals .line-grid{margin-top:10px;gap:10px}
+.home-portals .line-tile{aspect-ratio:4/3}
+.line-tile span{bottom:25%;font-size:clamp(16px,2.7vw,34px);letter-spacing:.025em}
+.line-tile small{position:absolute;z-index:1;bottom:9%;width:100%;text-align:center;font-size:11px}
+.line-tile small .arrow{width:12px;height:12px;margin-left:2px;vertical-align:-2px}
+.info-buttons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:22px 20px;max-width:1080px;margin:auto}
+.info-buttons a{border:1px solid #d8d8d3;padding:10px 14px;font-size:12px;min-height:44px;display:flex;align-items:center}
+.info-buttons a:hover{background:#eaeae4}
+footer{padding:16px 5vw 110px;font-size:11px;gap:8px;justify-content:center;flex-direction:column;align-items:center;color:#666}
+.empty-line{padding:0 5vw 80px;max-width:800px}.empty-line p{margin-top:20px}
+#contact-options{position:fixed;right:22px;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:101;background:var(--paper);border:1px solid var(--line);padding:20px;width:290px;max-width:calc(100vw - 32px);box-shadow:0 5px 30px #0002}
+#contact-options[hidden]{display:none}
+#contact-options p{font-size:13px;margin-bottom:12px}
+#contact-options a,#contact-options button{display:block;width:100%;padding:13px 0;border:0;border-top:1px solid var(--line);text-align:left;font:15px Arial;background:transparent;color:var(--ink)}
+#contact-options button:disabled{color:#76766f}
+#contact-options small{display:block;font-size:11px;margin-top:6px}
+#contact-options .profile-fallback{font-size:11px}
+@media(max-width:800px){
+ header{grid-template-columns:1fr;grid-template-rows:auto auto;padding:4px 16px 15px;gap:0}
+ header .languages{min-height:32px}header .languages button{min-height:34px;padding:8px}
+ header .wordmark{margin:0;font-size:25px}
+ .home-portals{padding:0 12px}
+ .about-tile{height:38svh;min-height:250px;max-height:350px}
+ .about-tile>div{left:18px;bottom:20px}
+ .about-tile img{object-position:center 28%}
+ .home-portals .line-grid{gap:6px;margin-top:6px}
+ .home-portals .line-tile{aspect-ratio:2/3}
+ .line-tile span{font-size:clamp(12px,3.3vw,23px);bottom:24%;letter-spacing:0}
+ .line-tile small{font-size:10px}
+ .info-buttons{gap:6px;padding:17px 12px}.info-buttons a{padding:9px 10px;font-size:11px}
+}
