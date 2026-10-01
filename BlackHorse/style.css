@@ -43,3 +43,15 @@ footer{padding-bottom:110px}
 .floating-contact{z-index:100;pointer-events:auto;touch-action:manipulation;cursor:pointer}
 .floating-contact>*{pointer-events:none}
 @media(max-width:800px){.floating-contact{bottom:calc(28px + env(safe-area-inset-bottom,0px))}}
+
+/* Centered brand header: navigation remains a separate, readable row. */
+header{height:auto;display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:auto auto;align-items:center;gap:16px 0;padding:20px 4vw 17px}
+header .wordmark{grid-column:2;grid-row:1;justify-self:center;text-align:center}
+header .languages{grid-column:3;grid-row:1;justify-self:end}
+header nav{grid-column:1/-1;grid-row:2;justify-self:center}
+@media(max-width:800px){
+ header{height:auto;min-height:0;grid-template-columns:1fr;grid-template-rows:auto auto auto;justify-items:center;gap:0;padding:9px 5vw 17px}
+ header .languages{grid-column:1;grid-row:1;justify-self:end;min-height:38px}
+ header .wordmark{grid-column:1;grid-row:2;justify-self:center;text-align:center;font-size:clamp(21px,5.8vw,28px);letter-spacing:.1em;margin:0 0 18px}
+ header nav{grid-column:1;grid-row:3;justify-self:center;justify-content:center;gap:30px}
+}
