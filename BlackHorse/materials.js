@@ -1,14 +1,14 @@
 // Add Dinara's photographed swatches here when supplied.
-// Each shade: { id, name: { en, ru }, image: 'assets/leather/filename.jpg' }.
+// Each shade: { id, name: { en, ru, kk }, image: 'assets/leather/filename.jpg' }.
 // Set leatherShadeIds on each product to its confirmed compatible shade IDs.
 // No colour or product availability is assumed before confirmation.
 window.leatherShades=[];
 const selectedLeather={};
 function leatherOptions(p){
  const shades=(p.leatherShadeIds||[]).map(id=>window.leatherShades.find(s=>s.id===id)).filter(Boolean);
- const title=language==='ru'?'Цвета кожи':'Leather colours';
- if(!shades.length)return '<div class="leather-options"><p class="leather-label">'+title+'</p><p class="leather-empty">'+(language==='ru'?'Образцы скоро появятся':'Samples coming soon')+'</p></div>';
- return '<div class="leather-options"><p class="leather-label">'+title+'</p><div class="swatches" role="group" aria-label="'+title+' — '+esc(p.name)+'">'+shades.map(s=>'<button type="button" class="swatch" data-product="'+esc(p.slug)+'" data-shade="'+esc(s.id)+'" aria-label="'+esc(s.name[language]||s.name.en)+'" aria-pressed="'+(selectedLeather[p.slug]===s.id)+'"><img src="'+esc(s.image)+'" alt="" loading="lazy"></button>').join('')+'</div><p class="shade-name" aria-live="polite">'+esc(shades.find(s=>s.id===selectedLeather[p.slug])?.name[language]||(language==='ru'?'Выберите оттенок':'Select a shade'))+'</p></div>';
+ const title=localized('Leather colours','Цвета кожи','Былғары түстері');
+ if(!shades.length)return '<div class="leather-options"><p class="leather-label">'+title+'</p><p class="leather-empty">'+localized('Samples coming soon','Образцы скоро появятся','Үлгілер жақында қосылады')+'</p></div>';
+ return '<div class="leather-options"><p class="leather-label">'+title+'</p><div class="swatches" role="group" aria-label="'+title+' — '+esc(p.name)+'">'+shades.map(s=>'<button type="button" class="swatch" data-product="'+esc(p.slug)+'" data-shade="'+esc(s.id)+'" aria-label="'+esc(s.name[language]||s.name.en)+'" aria-pressed="'+(selectedLeather[p.slug]===s.id)+'"><img src="'+esc(s.image)+'" alt="" loading="lazy"></button>').join('')+'</div><p class="shade-name" aria-live="polite">'+esc(shades.find(s=>s.id===selectedLeather[p.slug])?.name[language]||localized('Select a shade','Выберите оттенок','Реңкті таңдаңыз'))+'</p></div>';
 }
 function bindLeatherOptions(){
  document.querySelectorAll('[data-shade]').forEach(button=>button.onclick=()=>{
