@@ -1,4 +1,4 @@
-let language='en';try{if(localStorage.getItem('blackhorse-language')==='ru')language='ru';}catch{}
+let language='en';try{if(['en','ru','kk'].includes(localStorage.getItem('blackhorse-language')))language=localStorage.getItem('blackhorse-language');}catch{}
 const arrow='<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg>';
 const translations={
  'PRIVATE CATALOGUE PREVIEW · PRICES & ORDERING TO BE CONFIRMED':'ПРЕДПРОСМОТР КАТАЛОГА · ЦЕНЫ И УСЛОВИЯ ЗАКАЗА УТОЧНЯЮТСЯ',
@@ -38,30 +38,74 @@ const translations={
  'Discover Wonder Woman':'Открыть Wonder Woman',
  'Message BLACK HORSE on Instagram (opens in a new tab)':'Написать BLACK HORSE в Instagram (в новой вкладке)'
 };
+const translationsKk={
+ 'PRIVATE CATALOGUE PREVIEW · PRICES & ORDERING TO BE CONFIRMED':'КАТАЛОГТЫҢ АЛДЫН АЛА НҰСҚАСЫ · БАҒАЛАР МЕН ТАПСЫРЫС ШАРТТАРЫ НАҚТЫЛАНУДА',
+ 'Skip to content':'Негізгі мазмұнға өту','Black Horse home':'BLACK HORSE — басты бет','Main navigation':'Негізгі мәзір','Language':'Тіл',
+ 'Independent spirit. Sculptural form.':'Нәзіктіктің сауыты',
+ 'Catalogue preview · Online purchasing is not yet available.':'Каталогтың алдын ала нұсқасы · Сайт арқылы сатып алу әзірге қолжетімсіз.',
+ 'Explore the catalogue':'Каталогты қарау','The catalogue':'Каталог','Catalogue':'Каталог','Our world':'Біздің әлем','Message us':'Бізге жазыңыз',
+ 'Contact BLACK HORSE':'BLACK HORSE-қа хабарласу',
+ 'Open Instagram chat':'Instagram чатын ашу','Open @blackhorse.kz profile':'@blackhorse.kz парақшасын ашу',
+ 'If chat does not open, visit our profile and tap Message. Instagram may ask you to sign in.':'Чат ашылмаса, парақшамызға өтіп, «Хабарлама» түймесін басыңыз. Instagram жүйеге кіруді сұрауы мүмкін.',
+ 'An ornate, sculptural silhouette, seen through a steppe-inspired editorial story.':'Дала рухынан шабыт алған фотосуреттегі өрнекті, айқын пішінді бейне.',
+ 'A structured silhouette with ornamental detailing and a distinctive metalwork finish.':'Айқын пішін, оюлы бөлшектер және ерекше металл әшекей.',
+ 'Strong curved lines and a sculpted waist. Explore the different styling and colour treatments in the gallery.':'Айқын иілімдер мен белді ерекше көрсететін пішін. Галереядан түрлі образдар мен түстерді қараңыз.',
+ 'A sharp, fitted silhouette with a front zip, photographed in a dramatic black-and-red campaign.':'Алдыңғы сыдырмасы бар қынама бел пішін. Қара-қызыл түсті фотосерияда көрсетілген.',
+ 'Long fringe brings movement to a defined waist. Explore the different lengths and styling shown here.':'Ұзын шашақ белді айқындап, қозғалысқа көрік береді. Мұнда әртүрлі ұзындық пен үйлестіру тәсілдері көрсетілген.',
+ 'Piece not found':'Үлгі табылмады','Return to catalogue':'Каталогқа оралу','Show fewer photographs':'Фотосуреттерді жасыру',
+ 'Price and availability: awaiting confirmation.':'Бағасы мен қолжетімділігі нақтылануда.',
+ 'Sizes, materials, colour options and production time will be confirmed before ordering opens.':'Өлшемдер, материалдар, түстер және дайындалу мерзімі тапсырыс қабылдау басталғанға дейін нақтыланады.',
+ 'Contact BLACK HORSE on Instagram':'BLACK HORSE-қа Instagram арқылы жазу','Explore more':'Басқа үлгілер',
+ 'Product categories':'Бұйым санаттары','All':'Барлығы','Corsets':'Корсеттер','Basques':'Баскалар','Belts':'Белдіктер','View piece':'Толығырақ',
+ 'Launch selection to be confirmed':'Ұсынылатын үлгілер тізімі нақтылануда',
+ 'Nomad Angel photographed with a horse in a steppe landscape':'Даладағы атпен түскен Nomad Angel',
+ 'The BLACK HORSE world':'BLACK HORSE әлемі','Rooted in spirit.':'Рухы тамырында.','Shaped for presence.':'Болмысы пішінінде.',
+ 'Discover Dinara’s world of sculptural corsets, ornamental details and expressive silhouettes.':'Динараның айқын пішінді корсеттері, оюлы бөлшектері мен әсерлі образдары әлемін ашыңыз.',
+ 'The collection moves between sharply defined shapes and a richly detailed, steppe-inspired visual language.':'Бұл топтамада айқын пішіндер, бай бөлшектер және даладан шабыт алған бейнелер тоғысады.',
+ 'Atelier':'Ателье','A conversation':'Өзіңіздің','about your piece.':'бұйымыңыз туралы сөйлесейік.',
+ 'For questions about a design, its fit or possible variations, contact BLACK HORSE directly. Include the piece’s name and what you would like to know.':'Үлгінің дизайны, қонымы немесе ықтимал өзгерістері туралы сұрақтарыңыз болса, BLACK HORSE-қа тікелей жазыңыз. Үлгінің атауын және сұрағыңызды көрсетіңіз.',
+ 'Available sizes, custom options, lead times and prices are still being confirmed for this catalogue.':'Қолжетімді өлшемдер, жеке тапсырыс нұсқалары, дайындалу мерзімі мен бағалар әлі нақтылануда.',
+ 'Contact the atelier':'Ательеге жазу','Nomad Angel corset, styled with a horse in the steppe':'Даладағы атпен түскен Nomad Angel корсеті',
+ 'Ornamental details of the Nomad Angel corset':'Nomad Angel корсетінің оюлы бөлшектері',
+ 'An untamed':'Еркін рухты','kind of elegance.':'әсемдік.','A first look':'Алғашқы танысу','Shape. Spirit. Presence.':'Пішін. Рух. Болмыс.',
+ 'View all 21 pieces':'Барлық 21 үлгі','Wonder Woman sculptural corset with an ornamental headpiece':'Әшекейлі бас киіммен көрсетілген Wonder Woman корсеті',
+ 'Sculptural expression':'Айқын пішін','Not just worn.':'Жай ғана киім емес.','Felt.':'Сезім.',
+ 'Defined waists. Dramatic lines.':'Айқындалған бел. Әсерлі сызықтар.',
+ 'Details that deserve a second look.':'Қайта қарағыңыз келетін бөлшектер.',
+ 'Discover Wonder Woman':'Wonder Woman үлгісін қарау',
+ 'Message BLACK HORSE on Instagram (opens in a new tab)':'BLACK HORSE-қа Instagram арқылы жазу (жаңа бетте ашылады)'
+};
+function localized(en,ru,kk){return language==='ru'?ru:language==='kk'?kk:en}
 function translateText(text){
- if(language!=='ru')return text;
- const trimmed=text.trim();let result=translations[trimmed];
+ if(language==='en')return text;
+ const trimmed=text.trim(),dictionary=language==='ru'?translations:translationsKk;
+ let result=dictionary[trimmed];
  if(!result){
-  result=trimmed.replace(/^Explore the silhouette, details and styling of (.+) in the BLACK HORSE collection\.$/,'Силуэт, детали и варианты стилизации $1 в каталоге BLACK HORSE.')
+  if(language==='ru')result=trimmed.replace(/^Explore the silhouette, details and styling of (.+) in the BLACK HORSE collection\.$/,'Силуэт, детали и варианты стилизации $1 в каталоге BLACK HORSE.')
    .replace(/^Mention (.+) in your message\. This preview does not accept orders or payments\.$/,'Укажите $1 в сообщении. В этом предпросмотре заказы и платежи не принимаются.')
    .replace(/^View all (\d+) photographs$/,'Все фотографии ($1)')
    .replace(/^(\d+) pieces · Launch selection to be confirmed$/,'Моделей: $1 · Ассортимент к запуску уточняется')
    .replace(/ — view (\d+)$/,' — ракурс $1');
-  if(result===trimmed)result=trimmed.split(/( · | \/ |← | — )/).map(part=>translations[part]||part).join('');
+  else result=trimmed.replace(/^Explore the silhouette, details and styling of (.+) in the BLACK HORSE collection\.$/,'BLACK HORSE топтамасындағы $1 үлгісінің пішінін, бөлшектерін және үйлестіру жолдарын қараңыз.')
+   .replace(/^Mention (.+) in your message\. This preview does not accept orders or payments\.$/,'Хабарламада $1 атауын көрсетіңіз. Бұл алдын ала нұсқада тапсырыс пен төлем қабылданбайды.')
+   .replace(/^View all (\d+) photographs$/,'Барлық фотосурет ($1)')
+   .replace(/^(\d+) pieces · Launch selection to be confirmed$/,'Үлгілер саны: $1 · Ұсынылатын үлгілер тізімі нақтылануда')
+   .replace(/ — view (\d+)$/,' — көрініс $1');
+  if(result===trimmed)result=trimmed.split(/( · | \/ |← | — )/).map(part=>dictionary[part]||part).join('');
  }
  return text.replace(trimmed,result);
 }
 function localizeHTML(html){
  // Translate text and accessibility labels only; routes, asset paths and brand names stay stable.
  html=html.replace(/↗/g,arrow);
- if(language==='ru')html=html.replace(/>([^<]+)</g,(_,text)=>'>'+translateText(text)+'<').replace(/(alt|aria-label)="([^"]*)"/g,(_,attr,text)=>attr+'="'+translateText(text)+'"');
+ if(language!=='en')html=html.replace(/>([^<]+)</g,(_,text)=>'>'+translateText(text)+'<').replace(/(alt|aria-label)="([^"]*)"/g,(_,attr,text)=>attr+'="'+translateText(text)+'"');
  return html;
 }
 function renderChrome(){
  document.documentElement.lang=language;
  document.querySelector('.skip').textContent=translateText('Skip to content');
  document.querySelector('.notice').textContent=translateText('PRIVATE CATALOGUE PREVIEW · PRICES & ORDERING TO BE CONFIRMED');
- document.querySelector('header').innerHTML=localizeHTML('<a class="wordmark" href="#home" aria-label="Black Horse home">BLACK HORSE<span>ATELIER</span></a><nav aria-label="Main navigation"><a href="#collection">Catalogue</a><a href="#story">Our world</a></nav>')+'<div class="languages" role="group" aria-label="'+translateText('Language')+'">'+['en','ru'].map(l=>'<button type="button" data-language="'+l+'" lang="'+l+'" aria-label="'+(l==='en'?'English':'Русский')+'" aria-pressed="'+(language===l)+'">'+l.toUpperCase()+'</button>').join('')+'</div>';
+ document.querySelector('header').innerHTML=localizeHTML('<a class="wordmark" href="#home" aria-label="Black Horse home">BLACK HORSE<span>ATELIER</span></a><nav aria-label="Main navigation"><a href="#collection">Catalogue</a><a href="#story">Our world</a></nav>')+'<div class="languages" role="group" aria-label="'+translateText('Language')+'">'+['en','ru','kk'].map(l=>'<button type="button" data-language="'+l+'" lang="'+l+'" aria-label="'+(l==='en'?'English':l==='ru'?'Русский':'Қазақша')+'" aria-pressed="'+(language===l)+'">'+(l==='kk'?'ҚАЗ':l.toUpperCase())+'</button>').join('')+'</div>';
  document.querySelectorAll('[data-language]').forEach(button=>button.onclick=()=>{language=button.dataset.language;try{localStorage.setItem('blackhorse-language',language);}catch{}render(false);document.querySelector('[data-language="'+language+'"]').focus({preventScroll:true});});
  document.querySelector('footer').innerHTML=localizeHTML('<a class="footer-brand" href="#home">BLACK HORSE</a><div><span>Independent spirit. Sculptural form.</span><a href="#collection">Explore the catalogue</a><a href="https://www.instagram.com/blackhorse.kz/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div><p>Catalogue preview · Online purchasing is not yet available.</p>').replace('https://ig.me/m/blackhorse.kz','https://www.instagram.com/blackhorse.kz/');
  const contact=document.getElementById('contact');contact.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3.5-.7L4 20l1.2-4.5a8 8 0 1 1 14.8-4Z"/><path d="M8 11.5h8"/></svg><span>'+translateText('Message us')+'</span>';contact.setAttribute('aria-label',translateText('Contact BLACK HORSE'));
