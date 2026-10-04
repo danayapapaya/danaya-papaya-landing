@@ -129,3 +129,32 @@ footer{padding:16px 5vw 110px;font-size:11px;gap:8px;justify-content:center;flex
  .line-tile small{font-size:10px}
  .info-buttons{gap:6px;padding:17px 12px}.info-buttons a{padding:9px 10px;font-size:11px}
 }
+
+
+/* Dinara homepage refinement: edge-to-edge imagery with one row divider. */
+.home-portals{max-width:none;margin:0;padding:0}
+.home-portals .line-grid{gap:0;margin-top:6px}
+.about-tile>div{bottom:24px}
+.about-tile p{
+  font:500 clamp(12px,1.25vw,17px)/1.25 Arial,Helvetica,sans-serif;
+  letter-spacing:.035em;
+  text-transform:none;
+  margin-bottom:9px
+}
+.line-tile span{
+  top:50%;
+  bottom:auto;
+  left:4%;
+  right:4%;
+  transform:translateY(-50%);
+  text-align:center;
+  font-style:italic
+}
+@media(max-width:800px){
+  header{padding-bottom:15px}
+  header .wordmark{margin:0;font-size:clamp(23px,6.4vw,30px);letter-spacing:.12em}
+  .home-portals{padding:0}
+  .home-portals .line-grid{gap:0;margin-top:5px}
+  .about-tile p{font-size:12px;letter-spacing:.025em}
+  .line-tile span{top:50%;bottom:auto;transform:translateY(-50%)}
+}
